@@ -38,6 +38,7 @@ resource "aws_security_group" "openshift-public-ingress" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  # Drata: Ensure that [aws_security_group.ingress.cidr_blocks] is explicitly defined and narrowly scoped to only allow traffic from trusted sources
   }
 
   //  HTTP Proxy
