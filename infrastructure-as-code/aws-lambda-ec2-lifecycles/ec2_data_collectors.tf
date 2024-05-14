@@ -3,6 +3,7 @@
 # or running instances.
 
 resource "aws_lambda_function" "getUntaggedInstances" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. If there is a need for your Lambda Function to access external endpoints this finding can be ignored
   filename         = "./files/getUntaggedInstances.zip"
   function_name    = "getUntaggedInstances"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
