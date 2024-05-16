@@ -1,5 +1,6 @@
 # Notify about untagged instances and their key names.                           
 resource "aws_lambda_function" "notifyUntaggedInstances" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. If there is a need for your Lambda Function to access external endpoints this finding can be ignored
   filename         = "./files/notifyUntaggedInstances.zip"
   function_name    = "notifyUntaggedInstances"
   role             = "${aws_iam_role.lambda_notify.arn}"
