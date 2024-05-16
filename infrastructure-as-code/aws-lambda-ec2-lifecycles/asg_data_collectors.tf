@@ -20,6 +20,7 @@ resource "aws_lambda_function" "getUntaggedASGs" {
 }
 
 resource "aws_lambda_function" "getTaggedASGs" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. If there is a need for your Lambda Function to access external endpoints this finding can be ignored
   filename         = "./files/getTaggedASGs.zip"
   function_name    = "getTaggedASGs"
   role             = "${aws_iam_role.lambda_read_instances.arn}"
