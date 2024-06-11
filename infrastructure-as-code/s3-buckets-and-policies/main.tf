@@ -42,6 +42,7 @@ resource "aws_kms_key" "my_key" {
 }
 
 resource "aws_s3_bucket" "bucket_0" {
+  # Drata: Set [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
   bucket = var.bucket_name
   acl    = var.bucket_acl
 
