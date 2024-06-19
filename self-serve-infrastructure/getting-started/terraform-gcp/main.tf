@@ -10,6 +10,7 @@ resource "google_compute_network" "demo_network" {
 }
 
 resource "google_compute_subnetwork" "demo_subnetwork" {
+  # Drata: Configure [google_compute_subnetwork.log_config] to ensure that security-relevant events are logged to detect malicious activity
   network       = "${google_compute_network.demo_network.name}"
   name          = "${var.sn_name}"
   region        = "${var.sn_region}"
