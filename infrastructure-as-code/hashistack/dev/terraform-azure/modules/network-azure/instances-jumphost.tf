@@ -1,4 +1,5 @@
 resource "azurerm_virtual_machine" "jumphost" {
+  # Drata: Set [azurerm_virtual_machine.tags] to ensure that organization-wide tagging conventions are followed.
   count = "${length(var.network_cidrs_public)}"
 
   name                  = "${var.environment_name}-jumphost-${count.index}"
