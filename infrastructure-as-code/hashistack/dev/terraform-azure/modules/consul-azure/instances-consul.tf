@@ -1,4 +1,5 @@
 resource "azurerm_virtual_machine" "consul" {
+  # Drata: Set [azurerm_virtual_machine.tags] to ensure that organization-wide tagging conventions are followed.
   count = "${length(var.network_cidrs_private)}"
 
   name                  = "${var.consul_datacenter}-${count.index}"
