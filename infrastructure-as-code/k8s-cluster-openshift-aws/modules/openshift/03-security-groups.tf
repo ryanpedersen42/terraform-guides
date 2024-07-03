@@ -74,6 +74,7 @@ resource "aws_security_group" "openshift-public-ingress" {
 //  HTTPS, which is needed for yum updates, git access etc etc.
 // Also for Vault on port 8200
 resource "aws_security_group" "openshift-public-egress" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-public-egress"
   description = "Security group that allows egress to the internet for instances over HTTP and HTTPS."
   vpc_id      = "${aws_vpc.openshift.id}"
