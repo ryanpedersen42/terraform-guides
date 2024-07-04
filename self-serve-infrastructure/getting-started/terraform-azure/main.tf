@@ -11,6 +11,7 @@ resource "azurerm_resource_group" "demo_resource_group" {
 }
 
 resource "azurerm_virtual_network" "demo_virtual_network" {
+  # Drata: Configure [azurerm_virtual_network.tags] to ensure that organization-wide tagging conventions are followed.
   name                = "${var.vn_name}"
   address_space       = ["${var.vn_address_space}"]
   location            = "${azurerm_resource_group.demo_resource_group.location}"
