@@ -1,4 +1,5 @@
 resource "azurerm_network_security_group" "jumphost" {
+  # Drata: Configure [azurerm_network_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   # Drata: Ensure that [azurerm_network_security_group.security_rule.source_address_prefix] is explicitly defined and narrowly scoped to only allow traffic from trusted sources
   name                = "${var.environment_name}-jumphost"
   location            = "${var.location}"
