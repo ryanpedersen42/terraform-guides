@@ -71,7 +71,7 @@ resource "aws_instance" "node1" {
   # Storage for Docker, see:
   # https://docs.openshift.org/latest/install_config/install/host_preparation.html#configuring-docker-storage
   ebs_block_device {
-    device_name = "/dev/sdf"
+    device_name = true
     volume_size = 80
   }
 
