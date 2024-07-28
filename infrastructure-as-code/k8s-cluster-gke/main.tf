@@ -35,6 +35,7 @@ resource "google_container_cluster" "k8sexample" {
 
   node_config {
     machine_type = "${var.node_machine_type}"
+    # Drata: Configure [google_container_cluster.node_config.labels] to ensure that organization-wide label conventions are followed.
     disk_size_gb = "${var.node_disk_size}"
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
