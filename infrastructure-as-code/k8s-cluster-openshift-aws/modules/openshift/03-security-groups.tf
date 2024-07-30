@@ -21,6 +21,7 @@ resource "aws_security_group" "openshift-vpc" {
 
   tags {
     Name    = "OpenShift Internal VPC"
+    # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
     Project = "openshift"
   }
 }
