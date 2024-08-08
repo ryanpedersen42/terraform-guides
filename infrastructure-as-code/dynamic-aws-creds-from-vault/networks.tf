@@ -4,5 +4,6 @@ resource "aws_vpc" "main" {
 
   tags {
     Name = "${var.environment_name}"
+  # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
