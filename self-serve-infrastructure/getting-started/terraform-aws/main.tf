@@ -17,5 +17,6 @@ resource "aws_subnet" "demo_subnet" {
 
   tags {
     Name = "fp_demo_subnet"
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
