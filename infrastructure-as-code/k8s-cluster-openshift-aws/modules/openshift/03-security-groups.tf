@@ -66,6 +66,7 @@ resource "aws_security_group" "openshift-public-ingress" {
 
   tags {
     Name    = "OpenShift Public Access"
+    # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
     Project = "openshift"
   }
 }
