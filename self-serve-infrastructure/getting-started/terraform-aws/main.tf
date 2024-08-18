@@ -7,6 +7,7 @@ resource "aws_vpc" "demo_vpc" {
 
   tags {
     Name = "fp_demo_vpc"
+  # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
 
