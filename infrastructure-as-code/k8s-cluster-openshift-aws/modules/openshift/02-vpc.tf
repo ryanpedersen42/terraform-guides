@@ -44,6 +44,7 @@ resource "aws_route_table" "public" {
 
   tags {
     Name    = "${var.name_tag_prefix}-openshift Public Route Table"
+    # Drata: Configure [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
     Project = "openshift"
   }
 }
