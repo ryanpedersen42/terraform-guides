@@ -44,6 +44,7 @@ resource "azurerm_virtual_machine" "jumphost" {
 
   tags {
     environment_name = "${var.environment_name}-jumphost-${count.index}"
+  # Drata: Configure [azurerm_windows_virtual_machine.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
 
