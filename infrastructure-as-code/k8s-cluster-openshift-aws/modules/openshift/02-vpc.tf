@@ -5,6 +5,7 @@ resource "aws_vpc" "openshift" {
 
   tags {
     Name    = "${var.name_tag_prefix}-openshift VPC"
+    # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
     Project = "openshift"
   }
 }
