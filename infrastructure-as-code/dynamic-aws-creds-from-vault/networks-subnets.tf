@@ -8,5 +8,6 @@ resource "aws_subnet" "public" {
 
   tags {
     Name = "${var.environment_name}-public-${count.index}"
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
