@@ -29,6 +29,7 @@ resource "aws_subnet" "public-subnet" {
 
   tags {
     Name    = "${var.name_tag_prefix}-openshift Public Subnet"
+    # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
     Project = "openshift"
   }
 }
