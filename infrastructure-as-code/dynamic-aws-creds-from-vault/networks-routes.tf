@@ -11,6 +11,7 @@ resource "aws_route_table" "public" {
 
   tags {
     Name = "${var.environment_name}-public"
+  # Drata: Configure [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
 
