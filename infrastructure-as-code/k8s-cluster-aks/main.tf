@@ -57,5 +57,6 @@ resource "azurerm_kubernetes_cluster" "k8sexample" {
 
   tags {
     Environment = "${var.environment}"
+  # Drata: Configure [azurerm_kubernetes_cluster.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
