@@ -13,5 +13,6 @@ resource "aws_instance" "ubuntu" {
 
   tags {
     Name = "${var.name}"
+  # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
   }
 }
