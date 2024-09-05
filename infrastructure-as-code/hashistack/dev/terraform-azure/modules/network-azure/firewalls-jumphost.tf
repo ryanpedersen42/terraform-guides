@@ -15,6 +15,7 @@ resource "azurerm_network_security_rule" "jumphost_ssh" {
   protocol  = "Tcp"
 
   source_address_prefix      = "*"
+  # Drata: Ensure that [azurerm_network_security_rule.source_address_prefix] is explicitly defined and narrowly scoped to only allow traffic from trusted sources
   source_port_range          = "*"
   destination_port_range     = "22"
   destination_address_prefix = "*"
