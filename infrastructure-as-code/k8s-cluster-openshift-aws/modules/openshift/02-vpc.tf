@@ -24,7 +24,7 @@ resource "aws_subnet" "public-subnet" {
   vpc_id                  = "${aws_vpc.openshift.id}"
   cidr_block              = "${var.subnet_cidr}"
   availability_zone       = "${lookup(var.subnetaz, var.region)}"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   depends_on              = ["aws_internet_gateway.openshift"]
 
   tags {
