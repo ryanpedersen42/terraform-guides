@@ -48,6 +48,7 @@ resource "aws_instance" "main" {
   instance_type = "t2.nano"
 
   tags = {
+    # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
     Name  = "${var.name}"
     TTL   = "${var.ttl}"
     owner = "${var.name}-guide"
