@@ -1,6 +1,7 @@
 resource "aws_vpc" "my_vpc" {
   cidr_block = var.network_config.vpc_cidr
   tags = {
+    # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
     Name = var.network_config.vpc_name
   }
 }
