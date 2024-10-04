@@ -28,6 +28,7 @@ resource "aws_security_group" "openshift-vpc" {
 //  This security group allows public ingress to the instances for HTTP, HTTPS
 //  and common HTTP/S proxy ports.
 resource "aws_security_group" "openshift-public-ingress" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-public-ingress"
   description = "Security group that allows public ingress to instances, HTTP, HTTPS and more."
   vpc_id      = "${aws_vpc.openshift.id}"
