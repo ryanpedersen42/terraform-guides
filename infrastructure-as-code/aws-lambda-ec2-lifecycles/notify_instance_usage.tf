@@ -1,5 +1,6 @@
 # Notify slack about the # of each instance type you have running.
 resource "aws_lambda_function" "notifyInstanceUsage" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. Exclude this finding if there is a need for your Lambda Function to access external endpoints
   filename         = "./files/notifyInstanceUsage.zip"
   function_name    = "notifyInstanceUsage"
   role             = "${aws_iam_role.lambda_notify.arn}"
