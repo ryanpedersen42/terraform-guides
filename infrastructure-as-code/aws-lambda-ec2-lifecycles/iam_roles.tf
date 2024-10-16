@@ -66,6 +66,7 @@ EOF
 # Role for our 'read_instances' lambda to assume
 # Used by data collectors to gather ec2 instance data.
 resource "aws_iam_role" "lambda_read_instances" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_read_instances"
 	assume_role_policy = <<EOF
 {
