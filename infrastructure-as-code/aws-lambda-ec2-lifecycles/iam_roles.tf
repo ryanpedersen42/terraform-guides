@@ -46,6 +46,7 @@ data "template_file" "iam_lambda_terminate_asgs" {
 # Role for our 'notify' lambda to assume
 # This role is allowed to use the data collector lambda functions.
 resource "aws_iam_role" "lambda_notify" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_notify"
 	assume_role_policy = <<EOF
 {
