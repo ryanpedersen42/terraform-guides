@@ -42,7 +42,7 @@ resource "aws_lambda_function" "getRunningInstances" {
   role             = "${aws_iam_role.lambda_read_instances.arn}"
   handler          = "getRunningInstances.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/getRunningInstances.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Gathers a list of running instances."
 }
