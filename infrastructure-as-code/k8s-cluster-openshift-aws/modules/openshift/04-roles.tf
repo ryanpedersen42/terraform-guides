@@ -2,6 +2,7 @@
 //  This role has a policy saying it can be assumed by ec2
 //  instances.
 resource "aws_iam_role" "openshift-instance-role" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "${var.name_tag_prefix}-openshift-instance-role"
 
   assume_role_policy = <<EOF
