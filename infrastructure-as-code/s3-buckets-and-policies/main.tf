@@ -42,6 +42,7 @@ resource "aws_kms_key" "my_key" {
 }
 
 resource "aws_s3_bucket" "bucket_0" {
+  # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
   # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = var.bucket_name
   acl    = var.bucket_acl
