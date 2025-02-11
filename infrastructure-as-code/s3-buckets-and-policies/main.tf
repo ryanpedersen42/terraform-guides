@@ -44,6 +44,7 @@ resource "aws_kms_key" "my_key" {
 resource "aws_s3_bucket" "bucket_0" {
   bucket = var.bucket_name
   acl    = var.bucket_acl
+  # Drata: It is recommended to use [s3.bucket.public_access_block_configuration] to control S3 bucket public access over Canned Access Control Lists (ACLs)
 
   policy = <<POLICY
 {
