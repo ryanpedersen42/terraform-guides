@@ -12,6 +12,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "sagemaker" {
+  # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
   cidr_block = "10.0.0.0/16"
 }
 
