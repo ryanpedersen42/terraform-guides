@@ -25,7 +25,7 @@ resource "aws_lambda_function" "getTaggedInstances" {
   role             = "${aws_iam_role.lambda_read_instances.arn}"
   handler          = "getTaggedInstances.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/getTaggedInstances.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Gathers a list of correctly tagged instances."
 
