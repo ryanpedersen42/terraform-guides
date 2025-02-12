@@ -12,15 +12,18 @@ provider "aws" {
 }
 
 resource "aws_vpc" "sagemaker" {
+  # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
   cidr_block = "10.0.0.0/16"
 }
 
 resource "aws_subnet" "sagemaker" {
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id     = aws_vpc.sagemaker.id
   cidr_block = "10.0.1.0/24"
 }
 
 resource "aws_security_group" "allow_tls" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.sagemaker.id
@@ -46,6 +49,7 @@ data "aws_iam_policy_document" "instance-assume-role-policy" {
 }
 
 resource "aws_iam_role" "sagemaker" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name               = "instance_role"
   path               = "/system/"
   assume_role_policy = data.aws_iam_policy_document.instance-assume-role-policy.json

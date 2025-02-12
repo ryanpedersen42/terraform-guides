@@ -1,4 +1,7 @@
 resource "azurerm_virtual_machine" "consul" {
+  # Drata: It is recommended to create two or more virtual machines within an availability set to improve application redundancy and availability.
+  # Drata: Configure [azurerm_windows_virtual_machine.tags] to ensure that organization-wide tagging conventions are followed.
+  # Drata: Set [azurerm_windows_virtual_machine.encryption_at_host_enabled] to [true] to ensure transparent data encryption is enabled. This setting ensures temporary disks, caches, and data flows between Azure VM and Storage are encrypted.
   count = "${length(var.network_cidrs_private)}"
 
   name                  = "${var.consul_datacenter}-${count.index}"
