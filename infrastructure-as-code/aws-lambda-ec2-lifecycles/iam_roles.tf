@@ -86,6 +86,7 @@ EOF
 # Role for our 'stop_and_terminate_instances' lambda to assume.
 # This is used by lambdas that manage instance lifecycles.
 resource "aws_iam_role" "lambda_stop_and_terminate_instances" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_stop_and_terminate_instances"
 	assume_role_policy = <<EOF
 {
