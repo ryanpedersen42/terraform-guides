@@ -5,7 +5,7 @@ resource "aws_lambda_function" "notifyUntaggedInstances" {
   role             = "${aws_iam_role.lambda_notify.arn}"
   handler          = "notifyUntaggedInstances.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/notifyUntaggedInstances.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Sends a notification message with info about untagged instances."
 
