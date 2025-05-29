@@ -1,6 +1,7 @@
 //  This security group allows intra-node communication on all ports with all
 //  protocols.
 resource "aws_security_group" "openshift-vpc" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-vpc"
   description = "Default security group that allows all instances in the VPC to talk to each other over any port and protocol."
   vpc_id      = "${aws_vpc.openshift.id}"
