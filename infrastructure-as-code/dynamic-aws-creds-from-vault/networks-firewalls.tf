@@ -1,4 +1,5 @@
 resource "aws_security_group" "egress_public" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.environment_name}-egress_public"
   description = "${var.environment_name}-egress_public"
   vpc_id      = "${aws_vpc.main.id}"
