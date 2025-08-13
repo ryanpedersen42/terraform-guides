@@ -1,6 +1,7 @@
 # This lambda is intended to deal with untagged instances by either stopping
 # and then terminating them according to your lifecycle policy.
 resource "aws_lambda_function" "EC2Janitor" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. Exclude this finding if there is a need for your Lambda Function to access external endpoints
   filename         = "./files/EC2Janitor.zip"
   function_name    = "EC2Janitor"
   role             = "${aws_iam_role.lambda_stop_and_terminate_instances.arn}"
