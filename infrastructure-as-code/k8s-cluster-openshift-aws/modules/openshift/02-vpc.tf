@@ -21,6 +21,7 @@ resource "aws_internet_gateway" "openshift" {
 
 //  Create a public subnet.
 resource "aws_subnet" "public-subnet" {
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id                  = "${aws_vpc.openshift.id}"
   cidr_block              = "${var.subnet_cidr}"
   availability_zone       = "${lookup(var.subnetaz, var.region)}"
