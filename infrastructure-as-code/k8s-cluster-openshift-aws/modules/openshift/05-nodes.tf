@@ -7,6 +7,7 @@ data "template_file" "setup-master" {
 
 //  Launch configuration for the master
 resource "aws_instance" "master" {
+  # Drata: Set [aws_instance.ebs_block_device.encrypted] to [true] to ensure transparent data encryption is enabled
   ami                  = "${data.aws_ami.rhel7_5.id}"
   # Master nodes require at least 16GB of memory.
   instance_type        = "m4.xlarge"
