@@ -87,6 +87,7 @@ resource "aws_s3_bucket" "bucket_1" {
 }
 
 resource "aws_s3_bucket" "bucket_2" {
+  # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
   bucket = "roger-bucket-2"
   acl    = var.bucket_acl
 
