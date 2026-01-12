@@ -105,6 +105,7 @@ EOF
 
 # Role for our 'terminate_asgs' lambda to assume.
 resource "aws_iam_role" "lambda_terminate_asgs" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_terminate_asgs"
 	assume_role_policy = <<EOF
 {
