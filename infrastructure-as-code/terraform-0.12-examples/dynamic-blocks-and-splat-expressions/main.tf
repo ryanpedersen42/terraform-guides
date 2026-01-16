@@ -25,6 +25,7 @@ resource "aws_vpc" "my_vpc" {
 }
 
 resource "aws_security_group" "vault" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "vault"
   description = "Ingress for Vault"
   vpc_id      = aws_vpc.my_vpc.id
