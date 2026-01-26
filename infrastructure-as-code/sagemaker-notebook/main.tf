@@ -46,6 +46,7 @@ data "aws_iam_policy_document" "instance-assume-role-policy" {
 }
 
 resource "aws_iam_role" "sagemaker" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name               = "instance_role"
   path               = "/system/"
   assume_role_policy = data.aws_iam_policy_document.instance-assume-role-policy.json
