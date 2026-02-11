@@ -42,6 +42,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "demo" {
+  # Drata: Configure [google_compute_instance.labels] to ensure that organization-wide label conventions are followed.
   name         = "${var.instance_name}"
   machine_type = "${var.machine_type}"
   zone         = "${var.gcp_zone}"
