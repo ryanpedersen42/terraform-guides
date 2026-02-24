@@ -21,7 +21,7 @@ resource "google_sql_database_instance" "cloudsql-postgres-master" {
     tier = "db-f1-micro"
     ip_configuration {
             ipv4_enabled = true
-            require_ssl = false
+            require_ssl = true
             authorized_networks = {
                 name = "terraform-server-IP-allowed-list"
                 value = "${var.authorized_network}"
