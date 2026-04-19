@@ -8,7 +8,7 @@ resource "aws_lambda_function" "getUntaggedInstances" {
   role             = "${aws_iam_role.lambda_read_instances.arn}"
   handler          = "getUntaggedInstances.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/getUntaggedInstances.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Gathers a list of untagged or improperly tagged instances."
 
