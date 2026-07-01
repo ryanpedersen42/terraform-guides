@@ -102,6 +102,7 @@ resource "aws_s3_bucket" "bucket_2" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy_1" {
+  # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = aws_s3_bucket.bucket_1.id
   policy = data.aws_iam_policy_document.example.json
 }
