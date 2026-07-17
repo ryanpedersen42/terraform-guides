@@ -16,6 +16,7 @@ resource "aws_vpc" "sagemaker" {
 }
 
 resource "aws_subnet" "sagemaker" {
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id     = aws_vpc.sagemaker.id
   cidr_block = "10.0.1.0/24"
 }
