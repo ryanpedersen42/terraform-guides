@@ -7,6 +7,8 @@ data "template_file" "setup-master" {
 
 //  Launch configuration for the master
 resource "aws_instance" "master" {
+  # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
+  # Drata: Set [aws_instance.ebs_block_device.encrypted] to [true] to ensure transparent data encryption is enabled
   ami                  = "${data.aws_ami.rhel7_5.id}"
   # Master nodes require at least 16GB of memory.
   instance_type        = "m4.xlarge"
@@ -51,6 +53,8 @@ data "template_file" "setup-node" {
 
 //  Create the two nodes.
 resource "aws_instance" "node1" {
+  # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
+  # Drata: Set [aws_instance.ebs_block_device.encrypted] to [true] to ensure transparent data encryption is enabled
   ami                  = "${data.aws_ami.rhel7_5.id}"
   instance_type        = "${var.amisize}"
   subnet_id            = "${aws_subnet.public-subnet.id}"

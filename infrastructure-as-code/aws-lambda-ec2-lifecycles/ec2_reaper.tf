@@ -1,11 +1,12 @@
 # Checks the TTL of your instances, if expired can stop or terminate them.                         
 resource "aws_lambda_function" "EC2Reaper" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. Exclude this finding if there is a need for your Lambda Function to access external endpoints
   filename         = "./files/EC2Reaper.zip"
   function_name    = "EC2Reaper"
   role             = "${aws_iam_role.lambda_stop_and_terminate_instances.arn}"
   handler          = "EC2Reaper.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/EC2Reaper.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Checks instance TTLs for expiration and deals with them accordingly."
   environment {
