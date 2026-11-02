@@ -37,6 +37,7 @@ variable "shared_s3_vpce_id" {
 }
 
 resource "aws_kms_key" "my_key" {
+  # Drata: Configure [aws_kms_key.tags] to ensure that organization-wide tagging conventions are followed.
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
 }
