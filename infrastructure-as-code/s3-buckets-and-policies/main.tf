@@ -37,13 +37,18 @@ variable "shared_s3_vpce_id" {
 }
 
 resource "aws_kms_key" "my_key" {
+  # Drata: Define [aws_kms_key.policy] to restrict access to your resource. Follow the principal of minimum necessary access, ensuring permissions are scoped to trusted entities. Exclude this finding if you are managing access via IAM policies
+  # Drata: Configure [aws_kms_key.tags] to ensure that organization-wide tagging conventions are followed.
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
 }
 
 resource "aws_s3_bucket" "bucket_0" {
+  # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
+  # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = var.bucket_name
   acl    = var.bucket_acl
+  # Drata: It is recommended to use [s3.bucket.public_access_block_configuration] to control S3 bucket public access over Canned Access Control Lists (ACLs)
 
   policy = <<POLICY
 {
@@ -72,6 +77,7 @@ POLICY
 }
 
 resource "aws_s3_bucket" "bucket_1" {
+  # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
   bucket = "roger-bucket-1"
   acl    = var.bucket_acl
 
@@ -87,6 +93,7 @@ resource "aws_s3_bucket" "bucket_1" {
 }
 
 resource "aws_s3_bucket" "bucket_2" {
+  # Drata: Configure [aws_s3_bucket.tags] to ensure that organization-wide tagging conventions are followed.
   bucket = "roger-bucket-2"
   acl    = var.bucket_acl
 
@@ -102,13 +109,19 @@ resource "aws_s3_bucket" "bucket_2" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy_1" {
+  # Drata: It is recommended to use [s3.bucket.public_access_block_configuration] to control S3 bucket public access over Canned Access Control Lists (ACLs)
+  # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = aws_s3_bucket.bucket_1.id
   policy = data.aws_iam_policy_document.example.json
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy_2" {
+  # Drata: It is recommended to use [s3.bucket.public_access_block_configuration] to control S3 bucket public access over Canned Access Control Lists (ACLs)
+  # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = aws_s3_bucket.bucket_2.id
   policy = <<POLICY
+  # Drata: Explicitly define principals for [aws_s3_bucket_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
+  # Drata: Configure [aws_s3_bucket_policy.policy] to ensure secure protocols are being used to encrypt resource traffic
 {
   "Version":"2012-10-17",
   "Statement":[
