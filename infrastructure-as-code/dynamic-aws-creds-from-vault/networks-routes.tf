@@ -2,6 +2,7 @@
 # Public
 #
 resource "aws_route_table" "public" {
+  # Drata: Configure [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id = "${aws_vpc.main.id}"
 
   route {
