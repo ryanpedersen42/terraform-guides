@@ -1,5 +1,6 @@
 # Checks the TTL of your instances, if expired can stop or terminate them.                         
 resource "aws_lambda_function" "ASGReaper" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. Exclude this finding if there is a need for your Lambda Function to access external endpoints
   filename         = "./files/ASGReaper.zip"
   function_name    = "ASGReaper"
   role             = "${aws_iam_role.lambda_terminate_asgs.arn}"
