@@ -17,12 +17,14 @@ provider "google" {
 }
 
 resource "google_container_cluster" "k8sexample" {
+  # Drata: Configure [google_container_cluster.node_config.labels] to ensure that organization-wide label conventions are followed.
+  # Drata: Kubernetes provides an additional layer of security for sensitive data, such as Secrets, stored in etcd. Using this functionality, you can use a key managed by your Cloud provider to encrypt data at the etcd layer. This encryption protects against attackers who gain access to an offline copy of etcd. Ensure that [google_container_cluster.database_encryption.state] properties are correctly defined for encrypting secrets
   name               = "${var.vault_user}-k8s-cluster"
   description        = "example k8s cluster"
   zone               = "${var.gcp_zone}"
   initial_node_count = "${var.initial_node_count}"
   enable_kubernetes_alpha = "true"
-  enable_legacy_abac = "true"
+  enable_legacy_abac = false
 
   master_auth {
     username = "${var.master_username}"

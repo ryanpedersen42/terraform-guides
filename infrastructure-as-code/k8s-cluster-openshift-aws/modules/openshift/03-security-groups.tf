@@ -1,6 +1,7 @@
 //  This security group allows intra-node communication on all ports with all
 //  protocols.
 resource "aws_security_group" "openshift-vpc" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-vpc"
   description = "Default security group that allows all instances in the VPC to talk to each other over any port and protocol."
   vpc_id      = "${aws_vpc.openshift.id}"
@@ -28,6 +29,7 @@ resource "aws_security_group" "openshift-vpc" {
 //  This security group allows public ingress to the instances for HTTP, HTTPS
 //  and common HTTP/S proxy ports.
 resource "aws_security_group" "openshift-public-ingress" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-public-ingress"
   description = "Security group that allows public ingress to instances, HTTP, HTTPS and more."
   vpc_id      = "${aws_vpc.openshift.id}"
@@ -46,6 +48,7 @@ resource "aws_security_group" "openshift-public-ingress" {
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  # Drata: Ensure that [aws_security_group.ingress.cidr_blocks] is explicitly defined and narrowly scoped to only allow traffic from trusted sources
   }
 
   //  HTTPS
@@ -62,6 +65,7 @@ resource "aws_security_group" "openshift-public-ingress" {
     to_port     = 8443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  # Drata: Ensure that [aws_security_group.ingress.cidr_blocks] is explicitly defined and narrowly scoped to only allow traffic from trusted sources
   }
 
   tags {
@@ -74,6 +78,7 @@ resource "aws_security_group" "openshift-public-ingress" {
 //  HTTPS, which is needed for yum updates, git access etc etc.
 // Also for Vault on port 8200
 resource "aws_security_group" "openshift-public-egress" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "${var.name_tag_prefix}-openshift-public-egress"
   description = "Security group that allows egress to the internet for instances over HTTP and HTTPS."
   vpc_id      = "${aws_vpc.openshift.id}"
@@ -100,6 +105,7 @@ resource "aws_security_group" "openshift-public-egress" {
     to_port     = 8200
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  # Drata: Ensure that [aws_security_group.egress.cidr_blocks] is explicitly defined and narrowly scoped to only allow traffic to trusted sources
   }
 
   tags {

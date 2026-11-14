@@ -46,6 +46,7 @@ data "template_file" "iam_lambda_terminate_asgs" {
 # Role for our 'notify' lambda to assume
 # This role is allowed to use the data collector lambda functions.
 resource "aws_iam_role" "lambda_notify" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_notify"
 	assume_role_policy = <<EOF
 {
@@ -66,6 +67,7 @@ EOF
 # Role for our 'read_instances' lambda to assume
 # Used by data collectors to gather ec2 instance data.
 resource "aws_iam_role" "lambda_read_instances" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_read_instances"
 	assume_role_policy = <<EOF
 {
@@ -86,6 +88,7 @@ EOF
 # Role for our 'stop_and_terminate_instances' lambda to assume.
 # This is used by lambdas that manage instance lifecycles.
 resource "aws_iam_role" "lambda_stop_and_terminate_instances" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_stop_and_terminate_instances"
 	assume_role_policy = <<EOF
 {
@@ -105,6 +108,7 @@ EOF
 
 # Role for our 'terminate_asgs' lambda to assume.
 resource "aws_iam_role" "lambda_terminate_asgs" {
+  # Drata: Configure [aws_iam_role.tags] to ensure that organization-wide tagging conventions are followed.
   name = "lambda_terminate_asgs"
 	assume_role_policy = <<EOF
 {
