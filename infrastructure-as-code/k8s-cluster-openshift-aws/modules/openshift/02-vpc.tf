@@ -35,6 +35,7 @@ resource "aws_subnet" "public-subnet" {
 
 //  Create a route table allowing all addresses access to the IGW.
 resource "aws_route_table" "public" {
+  # Drata: Configure [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id = "${aws_vpc.openshift.id}"
 
   route {
