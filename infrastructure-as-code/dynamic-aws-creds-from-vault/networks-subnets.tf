@@ -1,4 +1,5 @@
 resource "aws_subnet" "public" {
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   count = "${length(var.vpc_cidrs_public)}"
 
   vpc_id                  = "${aws_vpc.main.id}"
