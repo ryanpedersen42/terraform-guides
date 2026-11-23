@@ -6,7 +6,7 @@ resource "aws_lambda_function" "EC2Janitor" {
   role             = "${aws_iam_role.lambda_stop_and_terminate_instances.arn}"
   handler          = "EC2Janitor.lambda_handler"
   source_code_hash = "${base64sha256(file("./files/EC2Janitor.zip"))}"
-  runtime          = "python3.6"
+  runtime          = "python3.11"
   timeout          = "120"
   description      = "Stops or terminates untagged instances after a pre-set number of days."
   environment {
