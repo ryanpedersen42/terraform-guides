@@ -23,6 +23,7 @@ resource "local_file" "inventory" {
 
 //  Launch configuration for the bastion.
 resource "aws_instance" "bastion" {
+  # Drata: Configure [aws_instance.tags] to ensure that organization-wide tagging conventions are followed.
   ami                  = "${data.aws_ami.amazonlinux.id}"
   instance_type        = "t2.micro"
   subnet_id            = "${aws_subnet.public-subnet.id}"
