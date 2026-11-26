@@ -21,6 +21,7 @@ resource "aws_subnet" "sagemaker" {
 }
 
 resource "aws_security_group" "allow_tls" {
+  # Drata: Configure [aws_security_group.tags] to ensure that organization-wide tagging conventions are followed.
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.sagemaker.id
