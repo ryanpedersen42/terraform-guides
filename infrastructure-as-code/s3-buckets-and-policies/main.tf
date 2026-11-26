@@ -107,6 +107,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_1" {
 }
 
 resource "aws_s3_bucket_policy" "bucket_policy_2" {
+  # Drata: Set [aws_s3_bucket_versioning.versioning_configuration.status] to [Enabled] to enable infrastructure versioning and prevent accidental deletions and overrides
   bucket = aws_s3_bucket.bucket_2.id
   policy = <<POLICY
   # Drata: Explicitly define principals for [aws_s3_bucket_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
