@@ -1,5 +1,6 @@
 # This lambda is intended to deal with untagged Auto Scaling Groups.
 resource "aws_lambda_function" "ASGJanitor" {
+  # Drata: Configure [aws_lambda_function.vpc_config] to improve network monitoring capabilities and ensure network communication is restricted to trusted sources. Exclude this finding if there is a need for your Lambda Function to access external endpoints
   filename         = "./files/ASGJanitor.zip"
   function_name    = "ASGJanitor"
   role             = "${aws_iam_role.lambda_terminate_asgs.arn}"
