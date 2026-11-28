@@ -1,5 +1,6 @@
 //  Define the VPC.
 resource "aws_vpc" "openshift" {
+  # Drata: Configure [aws_vpc.tags] to ensure that organization-wide tagging conventions are followed.
   cidr_block           = "${var.vpc_cidr}"
   enable_dns_hostnames = true
 
@@ -21,10 +22,11 @@ resource "aws_internet_gateway" "openshift" {
 
 //  Create a public subnet.
 resource "aws_subnet" "public-subnet" {
+  # Drata: Configure [aws_subnet.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id                  = "${aws_vpc.openshift.id}"
   cidr_block              = "${var.subnet_cidr}"
   availability_zone       = "${lookup(var.subnetaz, var.region)}"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
   depends_on              = ["aws_internet_gateway.openshift"]
 
   tags {
@@ -35,6 +37,7 @@ resource "aws_subnet" "public-subnet" {
 
 //  Create a route table allowing all addresses access to the IGW.
 resource "aws_route_table" "public" {
+  # Drata: Configure [aws_route_table.tags] to ensure that organization-wide tagging conventions are followed.
   vpc_id = "${aws_vpc.openshift.id}"
 
   route {
