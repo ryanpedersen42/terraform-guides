@@ -29,6 +29,7 @@ resource "azurerm_resource_group" "k8sexample" {
 
 # Azure Container Service (AKS) Cluster
 resource "azurerm_kubernetes_cluster" "k8sexample" {
+  # Drata: Set [azurerm_kubernetes_cluster.automatic_channel_upgrade] to any of ['stable', 'rapid', 'patch'] to automatically upgrade AKS cluster to the latest Kubernetes version
   # Drata: Set [azurerm_kubernetes_cluster.network_profile.network_policy] to any of ['azure', 'calico', 'cilium'] to define access policy specifications for communication between Pods
   # Drata: Ensure that [azurerm_kubernetes_cluster.api_server_authorized_ip_ranges] is explicitly defined and narrowly scoped to only allow trusted sources to access AKS Control Plane
   name = "${var.vault_user}-k8sexample-cluster"
